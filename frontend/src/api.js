@@ -1,11 +1,13 @@
-import axios from "axios";
-
-const API = "http://localhost:5000";
-
 export async function getRecommendation(prompt) {
-  const response = await axios.post(`${API}/recommend`, {
-    prompt,
+  const response = await fetch("/api/recommend", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      prompt,
+    }),
   });
 
-  return response.data;
+  return await response.json();
 }
