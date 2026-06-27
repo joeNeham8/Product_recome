@@ -4,7 +4,7 @@ import products from "./products";
 import ProductList from "./components/ProductList";
 import SearchBox from "./components/SearchBox";
 import Recommendation from "./components/Recommendation";
-import { getRecommendation } from "./gemini";
+import { getRecommendation } from "./api";
 
 import "./App.css";
 

@@ -4,10 +4,12 @@ export async function getRecommendation(prompt) {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({
-      prompt,
-    }),
+    body: JSON.stringify({ prompt }),
   });
+
+  if (!response.ok) {
+    throw new Error("Failed to get recommendations");
+  }
 
   return await response.json();
 }
