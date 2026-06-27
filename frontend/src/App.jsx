@@ -4,7 +4,7 @@ import products from "./products";
 import ProductList from "./components/ProductList";
 import SearchBox from "./components/SearchBox";
 import Recommendation from "./components/Recommendation";
-import { getRecommendation } from "./api";
+import { getRecommendation } from "./gemini";
 
 import "./App.css";
 
@@ -12,19 +12,20 @@ function App() {
   const [answer, setAnswer] = useState("");
   const [loading, setLoading] = useState(false);
 
-  async function handleSearch(prompt) {
-    setLoading(true);
+async function handleSearch(prompt) {
+  setLoading(true);
 
-    try {
-      const response = await getRecommendation(prompt);
+  try {
+    const answer = await getRecommendation(prompt, products);
 
-      setAnswer(response.answer);
-    } catch (error) {
-      setAnswer("Failed to get recommendations.");
-    }
-
-    setLoading(false);
+    setAnswer(answer);
+  } catch (error) {
+    console.error(error);
+    setAnswer("Failed to get recommendations.");
   }
+
+  setLoading(false);
+}
 
   return (
     <div className="container">
