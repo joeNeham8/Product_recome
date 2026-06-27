@@ -1,0 +1,20 @@
+.recommendation {
+  margin: 30px 0;
+  padding: 20px;
+  background: #dcfce7;
+  border-left: 6px solid green;
+  border-radius: 8px;
+  color: #000; /* Black text */
+}
+
+.recommendation h2 {
+  color: #000;
+  margin-top: 0;
+}
+
+.recommendation p {
+  color: #000;
+  white-space: pre-wrap;
+  line-height: 1.6;
+  font-size: 18px;
+}
