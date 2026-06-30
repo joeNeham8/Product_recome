@@ -7,7 +7,49 @@ const model = genAI.getGenerativeModel({
 });
 
 const products = [
-  // <-- Copy your existing products array here
+    {
+    id: 1,
+    name: "iPhone 13",
+    brand: "Apple",
+    category: "Phone",
+    price: 699,
+  },
+  {
+    id: 2,
+    name: "Samsung Galaxy A55",
+    brand: "Samsung",
+    category: "Phone",
+    price: 420,
+  },
+  {
+    id: 3,
+    name: "Google Pixel 8a",
+    brand: "Google",
+    category: "Phone",
+    price: 499,
+  },
+  {
+    id: 4,
+    name: "MacBook Air M2",
+    brand: "Apple",
+    category: "Laptop",
+    price: 999,
+  },
+  {
+    id: 5,
+    name: "Dell Inspiron 15",
+    brand: "Dell",
+    category: "Laptop",
+    price: 650,
+  },
+  {
+    id: 6,
+    name: "HP Pavilion 14",
+    brand: "HP",
+    category: "Laptop",
+    price: 700,
+  },
+  
 ];
 
 export default async function handler(req, res) {
@@ -39,10 +81,11 @@ Rules:
       answer: result.response.text(),
     });
   } catch (err) {
-    console.error(err);
+  console.error("Gemini Error:", err);
 
-    res.status(500).json({
-      answer: "Something went wrong.",
-    });
-  }
+  return res.status(500).json({
+    error: err.message,
+    details: err.toString(),
+  });
+}
 }
